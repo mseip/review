@@ -52,7 +52,7 @@ class User {
         if (!empty($exists)) {
             return [
                 "type" => "error",
-                "message" => "duplicate username!"
+                "message" => "Duplicate username!"
             ];
         }
 
@@ -73,7 +73,10 @@ class User {
                 ]
             ];
         } catch (Exception $e) {
-            return false;
+            return [
+                "type" => "error",
+                "message" => "Internal error!"
+            ];
         }
     }
 
@@ -126,12 +129,14 @@ class User {
                 ]
             ];
         } catch (Exception $e) {
-            return false;
+            return [
+                "type" => "error",
+                "message" => "Internal error!"
+            ];
         }
     }
 
-    public static function fetch()
-    {
+    public static function fetch() {
         if (
             !isset($_SESSION["user_id"]) ||
             !isset($_SESSION["user_name"])
@@ -143,8 +148,7 @@ class User {
         ];
     }
 
-    public static function logout()
-    {
+    public static function logout() {
         User::removeSession();
     }
 }

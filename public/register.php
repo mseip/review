@@ -25,18 +25,30 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 }
 ?>
 
-<?php if (isset($_GET["error"])) { ?>
-<h2 class="text-error text-center font-bold text-2xl">Failed to register!</h2>
-<?php } ?>
+<div class="text-center">
+    <h1 class="sm:text-5xl font-bold text-center max-sm:text-4xl mt-8">
+        <span>Kanji</span><span class="text-primary">Database</span>
+    </h1>
 
-<form action="register.php" method="post">
-    <label for="username">Username</label>
-    <input type="text" name="username" required />
+    <h2 class="text-xl max-sm:text-sm mb-8 mt-4 opacity-80 text-secondary font-bold">Create a new account</h2>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" required />
+    <?php if (isset($_GET["error"])) { ?>
+        <h2 class="text-error text-center font-bold mb-4 text-2xl">Failed to register!</h2>
+    <?php } ?>
 
-    <input type="submit" value="Submit" />
-</form>
+    <form class="flex justify-center" action="register.php" method="post">
+        <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+            <legend class="fieldset-legend">Register</legend>
+
+            <label class="label" for="username">Username</label>
+            <input type="text" class="input" placeholder="Username" name="username" required />
+
+            <label class="label" for="password">Password</label>
+            <input type="password" class="input" placeholder="Password" name="password" required />
+
+            <input type="submit" value="Login" class="btn btn-neutral mt-4" />
+        </fieldset>
+    </form>
+</div>
 
 <?php require_once("../includes/Layout/Footer.php"); ?>

@@ -7,6 +7,7 @@ if (!isset($_GET["search"])) {
     die();
 }
 
+$prev = urlencode($_GET["search"]);
 $chars = mb_str_split($_GET["search"]);
 $placeholders = implode(",", array_fill(0, count($chars), "?"));
 
@@ -59,9 +60,19 @@ $kanjis = Kanji::find("WHERE literal IN ($placeholders)", $chars);
             }
 
             foreach ($kanjis as $kanji) {
+                $safe = urlencode($kanji->literal);
+
                 echo "<div class='sm:flex sm:w-[70%] py-8 m-auto gap-4 max-sm:text-center'>";
                 {
-                    echo "<h2 class='font-bold text-8xl'>$kanji->literal</h2>";
+                    // Literal
+                    echo "<div class='text-center'>";
+                    {
+                        echo "<h2 class='font-bold text-8xl'>$kanji->literal</h2>";
+                        echo "<a class='text-xs text-primary opacity-60 hover:underline hover:opacity-100' href='details.php?kanji=$safe&prev=$prev'>Details</a>";
+                    }
+                    echo "</div>";
+
+                    // Details
                     echo "<div>";
                     {
                         echo "<h2 class='font-bold capitalize text-4xl'>$kanji->meaning</h2>";

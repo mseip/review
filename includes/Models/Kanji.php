@@ -36,18 +36,4 @@ class Kanji {
 
         return $out;
     }
-
-    public function details() {
-        return [
-            "id" => self->id,
-            "literal" => self->literal,
-            "grade" => self->grade,
-            "jlpt" => self->jlpt,
-            "freq" => self->freq,
-            "meaning" => self->meaning,
-            "onyomi" => self->onyomi,
-            "kunyomi" => self->kunyomi,
-            "nanori" => self->nanori,
-        ];
-    }
 }

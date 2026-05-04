@@ -20,3 +20,13 @@
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     </head>
     <body>
+        <div class="text-right fixed w-full bottom-2 right-4">
+            <?php if (User::fetch() === false) { ?>
+                <a class="text-primary opacity-60 hover:opacity-100" href="register.php">Register</a>
+                <a class="text-secondary opacity-60 hover:opacity-100"  href="login.php">Login</a>
+            <?php } else { ?>
+                <a class="text-primary opacity-60 hover:opacity-100" href="logout.php">Logout</a>
+            <?php } ?>
+
+            <?php var_dump(User::fetch()) ?>
+        </div>

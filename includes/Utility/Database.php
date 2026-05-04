@@ -1,6 +1,6 @@
 <?php
 class Database {
-    private $connection;
+    public $connection;
 
     public function __construct() {
         $this->connection = new PDO(
